@@ -7,13 +7,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.Doctor;
+
 /**
  * Servlet implementation class DoctorAPI
  */
 @WebServlet("/DoctorAPI")
 public class DoctorAPI extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+    
+	Doctor doctor = new Doctor();
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -28,6 +31,7 @@ public class DoctorAPI extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
 	}
 
 	/**
@@ -35,7 +39,20 @@ public class DoctorAPI extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+		
+				String output = doctor.AddDoctor(request.getParameter("D_fname"), 
+						request.getParameter("D_lname"), 
+						request.getParameter("D_gender"), 
+						request.getParameter("D_age"), 
+						request.getParameter("D_docNIC"), 
+						request.getParameter("D_docEmail"), 
+						request.getParameter("D_password"), 
+						request.getParameter("D_phonenumber"));
+					
+						response.getWriter().write(output);
+		
+		
 	}
 
 	/**

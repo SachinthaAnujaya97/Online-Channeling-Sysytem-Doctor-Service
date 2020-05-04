@@ -6,9 +6,11 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<script src="Component/jquery-3.5.0.min.js"></script>
+<script src="Components/jquery-3.5.0.min.js"></script>
 <link href="Views/css/bootstrap.min.css" rel="stylesheet">
 <link href="Views/css/style.css" rel="stylesheet">
+<script src="Components/doctor.js"></script>
+
 </head>
 <body>
 
@@ -16,48 +18,50 @@
 		<div class="row">
 			<div class="col-6">
 				<h1>Doctor Details</h1>
-				<form id="D_Id" name="doctorId">
+				<form id="doctorFome" name="doctorFome">
 					
-					First Name: <input id="fName" name="fName" type="text"
+					First Name: <input id="fName" name="D_fname" type="text"
 						class="form-control form-control-sm"> <br> 
 						
-					Last name:<input id="lNmae" name="lNmae" type="text"
+					Last name:<input id="lNmae" name="D_lname" type="text"
 						class="form-control form-control-sm"> <br>
 					
 					<div class="input-group input-group-sm mb-3">
 						<div class="input-group-prepend">
-							<span class="input-group-text" id="lblName">Gender: </span>
+							<span class="input-group-text" id="D_gender">
+							
+					Gender: </span>
 						</div>
 						&nbsp;&nbsp;Male <input type="radio" id="rdoGenderMale"
-							name="rdoGender" value="Male"> &nbsp;&nbsp;Female <input
-							type="radio" id="rdoGenderFemale" name="rdoGender" value="Female">
+							name="D_gender" value="Male"> &nbsp;&nbsp;Female <input
+							type="radio" id="rdoGenderFemale" name="D_gender" value="Female">
 					</div>
 
-					
-					Age: <input id="age" name="age" type="text"
+						
+					Age: <input id="age" name="D_age" type="text"
 						class="form-control form-control-sm"> <br> 
 						
-					NIC: <input id="docNIC" name="docNIC" type="text"
+					NIC: <input id="docNIC" name="D_docNIC" type="text"
 						class="form-control form-control-sm"> <br> 
 						
-					Email: <input id="docEmail" name="docEmail" type="text"
+					Email: <input id="docEmail" name="D_docEmail" type="text"
 						class="form-control form-control-sm"> <br> 
 						
-					Password:<input id="passwod" name="passwod" type="text"
+					Password:<input id="passwod" name="D_password" type="text"
 						class="form-control form-control-sm"> <br> 
 						
-					Phone Number: <input id="phoneNumber" name="phoneNumber" type="text"
-						class="form-control form-control-sm"> <br> <input
-						id="btnSave" name="btnSave" type="button" value="Save"
-						class="btn btn-primary"> <input type="hidden"
-						id="hidItemIDSave" name="hidItemIDSave" value="">
+					Phone Number: <input id="phoneNumber" name="D_phonenumber" type="text"
+						class="form-control form-control-sm"> <br> 
+						<input id="btnSave" name="btnSave" type="button" value="Save"
+						class="btn btn-primary"> 
+						<input type="hidden" id="hidDoctorIDSave" name="hidDoctorIDSave" value="">
 						
 				</form>
 				
 				<div id="alertSuccess" class="alert alert-success"></div>
 				<div id="alertError" class="alert alert-danger"></div>
 			<br>
-				<div id="divItemsGrid">
+				<div id="divDoctorGrid">
 					 <%
 					 Doctor docObj = new Doctor();
  					 out.print(docObj.readDoctor());

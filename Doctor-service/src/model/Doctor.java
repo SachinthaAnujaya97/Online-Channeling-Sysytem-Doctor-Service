@@ -26,8 +26,8 @@ public class Doctor {
 
 	}
 
-	public String AddDoctor(String D_fname, String D_lname, String D_gender, int D_age, String D_docNIC,
-			String D_docEmail, String D_password, int D_phonenumber ) {
+	public String AddDoctor(String D_fname, String D_lname, String D_gender, String D_age, String D_docNIC,
+			String D_docEmail, String D_password, String D_phonenumber ) {
 		String output = "";
 
 		try {
@@ -47,20 +47,25 @@ public class Doctor {
 			preparedStmt.setString(1, D_fname);
 			preparedStmt.setString(2, D_lname);
 			preparedStmt.setString(3, D_gender);
-			preparedStmt.setInt(4, D_age);
+			preparedStmt.setString(4, D_age);
 			preparedStmt.setString(5, D_docNIC);
 			preparedStmt.setString(6, D_docEmail);
 			preparedStmt.setString(7, D_password);
-			preparedStmt.setInt(8, D_phonenumber);
+			preparedStmt.setString(8, D_phonenumber);
 
 
 			
 			// execute the statement
 						preparedStmt.execute();
 						con.close();
-						output = "Inserted successfully";
+						
+						String newDoctor = readDoctor();
+						output = "{\"status\":\"success\"}"; 
+						 
 					} catch (Exception e) {
-						output = "Error while inserting the item.";
+						output = "{\"status\":\"error\", \"data\": "
+								+ "\"Error while inserting the Doctor.\"}"; 
+						output = "Error while inserting the Doctor Details.";	
 						System.err.println(e.getMessage());
 					}
 					return output;
@@ -110,7 +115,7 @@ public class Doctor {
 		 
 		   
 		    // Add into the html table
-			    output += "<tr><td>" + D_Id + "</td>";   
+			    output += "<tr><td><input id='hidDoctorIdUpdate'name='hidDoctorIDUpdate' type='hidden' value'"+D_Id+"'>" + D_Id + "</td>";   
 		   		output += "<td>" + D_fname + "</td>";     
 		   		output += "<td>" + D_lname + "</td>";    
 		   		output += "<td>" + D_gender + "</td>";     
@@ -122,12 +127,12 @@ public class Doctor {
 		   		
 		 
 		    // buttons     
-		   		output += "<td><input name=\"btnUpdate\" type=\"button\" value=\"Update\" class=\"btn btn-secondary\"></td>"      
-		   				+ "<td><form method=\"post\" action=\"Doctor.jsp\">"      
-		   				+ "<input name=\"btnRemove\" type=\"submit\" value=\"Remove\"     "
-		   				+ " class=\"btn btn-danger\">"      
-		   				+ "<input name=\"docId\" type=\"hidden\" value=\"" + D_Id      
-		   				+ "\">" + "</form></td></tr>";    
+		   		output += "<td><input name=\"btnUpdate\" type=\"button\""
+						+ " value=\"Update\" class=\"btn btn-secondary\"></td>"
+						+ "<td><form method=\"post\" action=\"Payment.jsp\">"
+						+ "<input name=\"btnRemove\" type=\"submit\" value=\"Remove\"" + " class=\"btn btn-danger\">"
+						+ "<input name=\"hidPaymentIDelete\" type=\"hidden\" value=\"" + D_Id + "\">" + "</form></td></tr>";
+			
 		   }
 	  
 	con.close();
@@ -208,7 +213,7 @@ public class Doctor {
 	}
 
 	/////////////Doctor Time Table Set //////////////////
-	
+	/*
 	
 	public String AddDocTimeDate (int D_Id, int H_Id, String H_avaDate,String H_avatime) {
 		
@@ -333,6 +338,6 @@ public class Doctor {
 			}
 		return output;
 }
-		
+*/		
 	
 }

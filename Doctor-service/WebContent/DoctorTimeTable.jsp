@@ -1,6 +1,6 @@
 <%@page import="model.Doctor"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+  pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,7 +39,7 @@
 				<div id="divItemsGrid">
 					 <%
 					 Doctor doctorObj = new Doctor();
- 					 out.print(doctorObj.viewdocTimeDate());
+ 					// out.print(doctorObj.viewdocTimeDate());
  					  %>
 					</div>
 
