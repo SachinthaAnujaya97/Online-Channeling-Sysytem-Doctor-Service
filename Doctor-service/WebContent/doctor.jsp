@@ -34,7 +34,6 @@
 					</div>
 
 					
-					
 					Age: <input id="age" name="age" type="text"
 						class="form-control form-control-sm"> <br> 
 						
