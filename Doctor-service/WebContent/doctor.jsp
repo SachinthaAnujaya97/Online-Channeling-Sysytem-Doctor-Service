@@ -59,8 +59,8 @@
 			<br>
 				<div id="divItemsGrid">
 					 <%
-					 Doctor doctorObj = new Doctor();
- 					 out.print(doctorObj.readDoctor());
+					 Doctor docObj = new Doctor();
+ 					 out.print(docObj.readDoctor());
  					  %>
 					</div>
 
