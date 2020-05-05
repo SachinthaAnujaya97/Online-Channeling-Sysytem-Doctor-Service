@@ -115,7 +115,7 @@ public class Doctor {
 		 
 		   
 		    // Add into the html table
-			    output += "<tr><td><input id='hidDoctorIdUpdate'name='hidDoctorIDUpdate' type='hidden' value'"+D_Id+"'>" + D_Id + "</td>";   
+			    output += "<tr><td><input id='hidDoctorIdUpdate'name='hidDoctorIDUpdate' type='hidden' value='"+D_Id+"'>" + D_Id + "</td>";   
 		   		output += "<td>" + D_fname + "</td>";     
 		   		output += "<td>" + D_lname + "</td>";    
 		   		output += "<td>" + D_gender + "</td>";     
@@ -127,11 +127,14 @@ public class Doctor {
 		   		
 		 
 		    // buttons     
-		   		output += "<td><input name=\"btnUpdate\" type=\"button\""
+		   		/*output += "<td><input name=\"btnUpdate\" type=\"button\""
 						+ " value=\"Update\" class=\"btn btn-secondary\"></td>"
-						+ "<td><form method=\"post\" action=\"Payment.jsp\">"
+						+ "<td><form method=\"post\" action=\"doctor.jsp\">"
 						+ "<input name=\"btnRemove\" type=\"submit\" value=\"Remove\"" + " class=\"btn btn-danger\">"
-						+ "<input name=\"hidPaymentIDelete\" type=\"hidden\" value=\"" + D_Id + "\">" + "</form></td></tr>";
+						+ "<input name=\"hidPaymentIDelete\" type=\"hidden\" value=\"" + D_Id + "\">" + "</form></td></tr>";*/
+		   		
+		   		output += "<td><input name='btnUpdate' type='button' value='Update' class='btnUpdate btn btn-secondary'></td> "
+						+ "<td><button name='btnRemove' type='button' value='"+ D_Id + "' class='btnRemove btn btn-danger'  data-ID= '" + D_Id + "'>remove</button></td></tr>";
 			
 		   }
 	  
@@ -175,9 +178,14 @@ public class Doctor {
 			// execute the statement
 			preparedStmt.execute();
 			con.close();
-			output = "Updated successfully";
+			
+			String newDoctor = readDoctor();
+			output = "{\"status\":\"success\"}"; 
+			 
 		} catch (Exception e) {
-			output = "Error while updating the item.";
+			output = "{\"status\":\"error\", \"data\": "
+					+ "\"Error while updating the Doctor.\"}"; 
+			output = "Error while updating the Doctor Details.";	
 			System.err.println(e.getMessage());
 		}
 		return output;
@@ -203,10 +211,14 @@ public class Doctor {
 			// execute the statement
 			preparedStmt.execute();
 			con.close();
-			output = "Deleted successfully";
 			
+			String newDoctor = readDoctor();
+			output = "{\"status\":\"success\"}"; 
+			 
 		} catch (Exception e) {
-			output = "Error while deleting the item.";
+			output = "{\"status\":\"error\", \"data\": "
+					+ "\"Error while deleting the Doctor.\"}"; 
+			output = "Error while deleting the Doctor Details.";	
 			System.err.println(e.getMessage());
 		}
 		return output;

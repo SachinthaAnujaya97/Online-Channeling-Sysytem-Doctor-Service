@@ -26,7 +26,7 @@
 					Last name:<input id="lNmae" name="D_lname" type="text"
 						class="form-control form-control-sm"> <br>
 					
-					<div class="input-group input-group-sm mb-3">
+					<!-- <div class="input-group input-group-sm mb-3">
 						<div class="input-group-prepend">
 							<span class="input-group-text" id="D_gender">
 							
@@ -35,8 +35,13 @@
 						&nbsp;&nbsp;Male <input type="radio" id="rdoGenderMale"
 							name="D_gender" value="Male"> &nbsp;&nbsp;Female <input
 							type="radio" id="rdoGenderFemale" name="D_gender" value="Female">
-					</div>
-
+					</div> -->
+					
+					<select class="form-control" id="gender" name ="D_gender">
+									<option value="0">choose....</option>
+									<option value="Male">Male</option>
+									<option value="Female">Female</option>
+								</select>
 						
 					Age: <input id="age" name="D_age" type="text"
 						class="form-control form-control-sm"> <br> 
@@ -61,7 +66,7 @@
 				<div id="alertSuccess" class="alert alert-success"></div>
 				<div id="alertError" class="alert alert-danger"></div>
 			<br>
-				<div id="divDoctorGrid">
+				<div id="divDoctorGrid"> 
 					 <%
 					 Doctor docObj = new Doctor();
  					 out.print(docObj.readDoctor());
