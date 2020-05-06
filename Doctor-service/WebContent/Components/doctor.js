@@ -1,3 +1,4 @@
+
 $(document).ready(function() {
 	$("#alertSuccess").hide();
 	$("#alertError").hide();
@@ -84,7 +85,7 @@ $(document).on("click", ".btnUpdate", function(event)
 				dataType : "text",
 				complete : function(response, status)
 				{
-					onPaymentDeleteComplete(response.responseText, status);
+					onDoctorDeleteComplete(response.responseText, status);
 				}
 			 });
 			});

@@ -1,6 +1,7 @@
 package com;
 
 import java.io.IOException;
+import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -89,14 +90,15 @@ public class DoctorAPI extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		Map paras = getParasMap(request);
-System.out.println(paras);
+		String doctorEmail = URLDecoder.decode(paras.get("D_docEmail").toString(), "UTF-8"); // Email decoder
+//System.out.println(paras);
 		String output = doctor.updateDoctor(paras.get("hidDoctorIDSave").toString(), 
 				paras.get("D_fname").toString(),
 				paras.get("D_lname").toString(), 
 				paras.get("D_gender").toString(), 
 				paras.get("D_age").toString(),
 				paras.get("D_docNIC").toString(), 
-				paras.get("D_docEmail").toString(),
+				doctorEmail,
 				paras.get("D_password").toString(), 
 				paras.get("D_phonenumber").toString());
 
